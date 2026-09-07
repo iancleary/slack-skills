@@ -52,5 +52,5 @@ fn cli_parse_errors_default_to_human_output() {
 fn cli_version_reports_package_version() {
     let output = run_slack_cli(&["--version"]);
     assert!(output.status.success());
-    assert!(String::from_utf8_lossy(&output.stdout).contains("0.1.0"));
+    assert!(String::from_utf8_lossy(&output.stdout).contains(env!("CARGO_PKG_VERSION")));
 }
