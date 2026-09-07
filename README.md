@@ -53,16 +53,22 @@ The runner updates all workspace crate versions, refreshes `Cargo.lock`, runs
 `just check`, creates a release commit and `v`-prefixed tag, pushes them, and
 creates a GitHub release with generated notes.
 
-Preview an exact release before publishing it:
+For a normal release, choose the intended SemVer change: `patch`, `minor`, or
+`major`. Use the same value for the plan, dry-run, and apply steps. For example:
 
 ```sh
 uv run scripts/release.py check --json
-uv run scripts/release.py plan --version 1.0.0 --json
-uv run scripts/release.py run --dry-run --version 1.0.0 --json
+uv run scripts/release.py plan --bump patch --json
+uv run scripts/release.py run --dry-run --bump patch --json
 ```
 
 Publish only after the dry-run succeeds:
 
 ```sh
-uv run scripts/release.py run --apply --version 1.0.0 --json
+uv run scripts/release.py run --apply --bump patch --json
 ```
+
+Use `--version <value>` instead of `--bump` only when the release requires an
+exact version, such as an initial release, prerelease, or build metadata. Release
+recovery also requires an exact version and the tagged commit. Follow the
+runner's `--resume` protocol instead of starting a second release.

@@ -24,5 +24,7 @@ Run `just check` before committing.
 - Use `uv run scripts/release.py` as the release entrypoint.
 - Run `check`, `plan`, and `run --dry-run` before `run --apply`.
 - Pass an exact version for an initial release, prerelease, or build metadata.
+- For recovery after a pushed tag, use `--resume` with the exact version and
+  tagged commit. Do not start a second release.
 - Treat `run --apply` as a public mutation. It commits, pushes, tags, and creates
   a GitHub release.
