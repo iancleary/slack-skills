@@ -1,0 +1,14 @@
+[package]
+name = "cli-core"
+version = "0.1.0"
+edition = "2024"
+description = "Shared command-line helpers for Slack Skills tools"
+license = "MIT"
+repository = "https://github.com/iancleary/slack-skills"
+readme = "../../README.md"
+publish = false
+
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

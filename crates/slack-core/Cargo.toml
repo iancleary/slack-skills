@@ -1,0 +1,17 @@
+[package]
+name = "slack-core"
+version = "0.1.0"
+edition = "2024"
+description = "Shared Slack API helpers for Slack Skills command-line tools"
+license = "MIT"
+repository = "https://github.com/iancleary/slack-skills"
+readme = "../../README.md"
+publish = false
+
+[dependencies]
+anyhow = "1"
+cli-core = { path = "../cli-core" }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"

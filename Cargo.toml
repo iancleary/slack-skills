@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "crates/cli-core",
+    "crates/slack-core",
+    "crates/slack-query",
+    "crates/slack-agent",
+]
+resolver = "2"
