@@ -1,6 +1,6 @@
 [package]
 name = "slack-core"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
 description = "Shared Slack API helpers for Slack Skills command-line tools"
 license = "MIT"
