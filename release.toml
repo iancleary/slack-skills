@@ -1,0 +1,33 @@
+# Release workflow: https://github.com/iancleary/release-skills
+[release]
+runner_protocol = "prepared-v1"
+name = "slack-skills"
+version_source = "crates/slack-query/Cargo.toml"
+runner = [
+  "uv", "run", "scripts/release.py", "cargo-release",
+  "--provider", "github",
+  "--version-source", "crates/slack-query/Cargo.toml",
+  "--version-target", "crates/cli-core/Cargo.toml",
+  "--version-target", "crates/slack-core/Cargo.toml",
+  "--version-target", "crates/slack-query/Cargo.toml",
+  "--version-target", "crates/slack-agent/Cargo.toml",
+  "--lockfile", "Cargo.lock",
+  "--tag-prefix", "v",
+  "--branch", "main",
+]
+dry_run_args = ["--dry-run"]
+current_version_command = [
+  "uv", "run", "scripts/release.py", "cargo-current-version",
+  "--version-source", "crates/slack-query/Cargo.toml",
+]
+publish = true
+
+[checks]
+commands = [
+  ["just", "check"],
+]
+
+[runner_source]
+repository = "https://github.com/iancleary/release-skills"
+revision = "c3f10cb42f3a05d1bd250c0780656b4ff3bad8a6"
+sha256 = "10869f02fe8a1190e75cc3e70eef85012e89dba52b89d865f79a6a9fb317139e"

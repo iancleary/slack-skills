@@ -44,3 +44,25 @@ just check
 
 Do not use live Slack credentials in tests. The test suite validates command and
 output behavior without contacting a workspace.
+
+## Release
+
+The repository uses the deterministic release runner from
+[`iancleary/release-skills`](https://github.com/iancleary/release-skills).
+The runner updates all workspace crate versions, refreshes `Cargo.lock`, runs
+`just check`, creates a release commit and `v`-prefixed tag, pushes them, and
+creates a GitHub release with generated notes.
+
+Preview an exact release before publishing it:
+
+```sh
+uv run scripts/release.py check --json
+uv run scripts/release.py plan --version 1.0.0 --json
+uv run scripts/release.py run --dry-run --version 1.0.0 --json
+```
+
+Publish only after the dry-run succeeds:
+
+```sh
+uv run scripts/release.py run --apply --version 1.0.0 --json
+```
